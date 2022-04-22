@@ -36,12 +36,17 @@ class Process
 
     public static function leaderboard(){
 
+        $currentUser = Utilities::fetchRequiredDataFromArray($_GET, 'user');
+
         $total = (new Database())->processQuery("SELECT count(*) as `count` FROM ranks LEFT JOIN users ON `user_id`  = rank_user_name ORDER BY rank_score DESC", []);
         
         // use DISTINCT in the GROUP_CONCAT to make sure there are no gaps in the rankings
         $users = (new Database())->processQuery("SELECT *, FIND_IN_SET( rank_score, (SELECT GROUP_CONCAT( DISTINCT rank_score ORDER BY rank_score DESC ) FROM ranks)) AS ranking FROM ranks LEFT JOIN users ON `user_id` = rank_user_name ORDER BY rank_score DESC", []);
 
-        return Utilities::response(true, null, ["users" => $users, "count" => isset($total) && count(['count']) > 0 ? reset($total)['count'] : 0]);
+        // GET pecified User Rank
+        $user = (new Database())->processQuery("SELECT *, FIND_IN_SET( rank_score, (SELECT GROUP_CONCAT( DISTINCT rank_score ORDER BY rank_score DESC ) FROM ranks)) AS ranking FROM ranks LEFT JOIN users ON `user_id` = rank_user_name WHERE `user_name` = ? ORDER BY rank_score DESC", [$currentUser]);
+
+        return Utilities::response(true, null, ["user" => $user,"users" => $users, "count" => isset($total) && count(['count']) > 0 ? reset($total)['count'] : 0]);
     }
 
 }

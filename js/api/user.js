@@ -38,6 +38,9 @@
 
         // INSERTING DATA
         $(document).on("click", "#user-form-button", function (e) {
+            document.getElementById('button_loader').classList.remove("hide");
+            document.getElementById('user-form-button').disabled = true;
+
             var userscore = document.getElementById('input-score').value
             var name = $('#user-form-input').val();
 
@@ -51,6 +54,9 @@
         });
 
         $(document).on("click", "#user-form-completed-button", function (e) {
+            document.getElementById('button_loader').classList.remove("hide");
+            document.getElementById('user-form-completed-button').disabled = true;
+
             var userscore = document.getElementById('input-score').value
             var name = $('#user-form-completed-input').val();
 
@@ -62,8 +68,6 @@
 
             CompletedUser(data);
         });
-
-    
     });
 
 
@@ -84,6 +88,7 @@
                     table_tl.fromTo('#user-form-div', { opacity: 1 }, {
                         opacity: 0,
                         onComplete: function () { 
+                            document.getElementById('button_loader').classList.add("hide");
                             $("#table-scoreboard").load(displayLeaderboard()); // load ranks after user form is hidden
                         }
                     });  
@@ -114,6 +119,7 @@
                     table_tl.fromTo('#user-form-completed-div', { opacity: 1 }, {
                         opacity: 0,
                         onComplete: function () { 
+                            document.getElementById('button_loader').classList.add("hide");
                             $("#table-scoreboard").load(displayLeaderboard()); // load ranks after user form is hidden
                         }
                     });  
@@ -131,8 +137,8 @@
 
 
     function displayLeaderboard() {
-
-        ajaxRequest(null,
+        var name = $('#user-form-input').val();
+        ajaxRequest({user: name},
             {
                 url: leaderboard_api,
                 type: "GET",
@@ -148,35 +154,43 @@
                                 showPageNumbers: false,
                                 showNavigator: true,
                                 callback: function (data, pagination) {
-                                    generateLeaderboard('#table-body', data); // display data from response
+                                    generateLeaderboard('#table-body', data, response_data.content.user); // display data from response
                                 }
                             })
+                            generateUserRank('#current_rank', response_data.content.user);
                         }
                     }
                 }
             });
     }
 
-    function generateLeaderboard($table_id_name, $content) {
+    function generateLeaderboard($table_id_name, $content, $current) {
 
         $($table_id_name).empty(); //empty the data first before adding or append to avoid replication
 
         for (var num = 0; num < $content.length; num++) {
-
             // place the data from content users
             $html = [
-                '<tr>',
+                $current[0].user_name == $content[num].user_name ? '<tr class="score white-text">' : '<tr class="">',
                 '<td>'+ $content[num].ranking +'</td>',
                 '<td>'+$content[num].user_name+'</td>',
                 '<td class="white-text">'+$content[num].rank_score+'</td>',
                 '</tr>'
             ]
-
             $($table_id_name).append($html.join("")); //returns an array as a string and append it to the table
         }
 
     }
 
+    function generateUserRank($user_rank, $content) {
+        $($user_rank).empty();
 
+        $html = [
+            '<span class="white-text blue-grey-text text-lighten-3 custom-font-start-title"><span class="teal-text text-lighten-3">YOU</span> [' + $content[0].user_name + ' - ' + $content[0].rank_score + '] - <span class="teal-text text-lighten-3">RANK</span> ' + $content[0].ranking + '</span>',
+        ]
+
+        $($user_rank).append($html.join("")); //returns an array as a string and append it to the table
+        
+    }
     
 })();

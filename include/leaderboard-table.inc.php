@@ -2,7 +2,7 @@
 <!-- leaderboard -->
 <div class="start-button-div container bg-table py-1 rounded-image hide" id="table-scoreboard">
 <p class="center white-text flow-text custom-font-start-title mb-3">LEADERBOARD</p>
-
+<p id="current_rank" class="center mt-3 mb-3"></p>
 <!-- table leaderboard -->
 <table class="centered white-text custom-font-start-title">
     <thead>
