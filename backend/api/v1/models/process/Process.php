@@ -17,6 +17,9 @@ class Process
 
         $checkuser = (new Database())->processQuery("SELECT * FROM users WHERE `user_name` = ?", [$userName]);
 
+        // if ($userScore == '0'){
+        //     $userScore = 1;
+        // }
         if (!empty($checkuser)){
             foreach($checkuser as $existData){
                 $existUserId = $existData['user_id'];
@@ -36,7 +39,13 @@ class Process
 
     public static function leaderboard(){
 
-        $currentUser = Utilities::fetchRequiredDataFromArray($_GET, 'user');
+        $currentUser = Utilities::fetchDataFromArray($_GET, 'user');
+        $currentUserComp = Utilities::fetchDataFromArray($_GET, 'user_comp');
+        if ($currentUser == ""){
+            $result = $currentUserComp;
+        }else{
+            $result = $currentUser;
+        }
 
         $total = (new Database())->processQuery("SELECT count(*) as `count` FROM ranks LEFT JOIN users ON `user_id`  = rank_user_name ORDER BY rank_score DESC", []);
         
@@ -44,7 +53,7 @@ class Process
         $users = (new Database())->processQuery("SELECT *, FIND_IN_SET( rank_score, (SELECT GROUP_CONCAT( DISTINCT rank_score ORDER BY rank_score DESC ) FROM ranks)) AS ranking FROM ranks LEFT JOIN users ON `user_id` = rank_user_name ORDER BY rank_score DESC", []);
 
         // GET pecified User Rank
-        $user = (new Database())->processQuery("SELECT *, FIND_IN_SET( rank_score, (SELECT GROUP_CONCAT( DISTINCT rank_score ORDER BY rank_score DESC ) FROM ranks)) AS ranking FROM ranks LEFT JOIN users ON `user_id` = rank_user_name WHERE `user_name` = ? ORDER BY rank_score DESC", [$currentUser]);
+        $user = (new Database())->processQuery("SELECT *, FIND_IN_SET( rank_score, (SELECT GROUP_CONCAT( DISTINCT rank_score ORDER BY rank_score DESC ) FROM ranks)) AS ranking FROM ranks LEFT JOIN users ON `user_id` = rank_user_name WHERE `user_name` = ? ORDER BY rank_score DESC", [$result]);
 
         return Utilities::response(true, null, ["user" => $user,"users" => $users, "count" => isset($total) && count(['count']) > 0 ? reset($total)['count'] : 0]);
     }

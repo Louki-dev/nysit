@@ -136,9 +136,14 @@
     }
 
 
-    function displayLeaderboard() {
+    function displayLeaderboard()  {
         var name = $('#user-form-input').val();
-        ajaxRequest({user: name},
+        var completed_name = $('#user-form-completed-input').val();
+        ajaxRequest(
+            {
+            user: name,
+            user_comp: completed_name
+            },
             {
                 url: leaderboard_api,
                 type: "GET",

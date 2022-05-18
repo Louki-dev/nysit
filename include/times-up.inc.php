@@ -15,13 +15,13 @@
 
     <!-- Timer Footer -->
     <div class="footer">
-    <!-- timer -->
-    <div class="progress mt-5 score hide" id="time-div" style="padding: 10px; margin: 0;">
-        <div class="determinate red lighten-1" id="time-sec" style="width: 0%;"></div>
-    </div>
-    <!-- process loader -->
-    <div class="progress blue-grey hide" id="button_loader" style="margin: 0;">
-        <div class="indeterminate score"></div>
-    </div>
+        <!-- timer -->
+        <div class="progress mt-5 score hide" id="time-div" style="padding: 10px; margin: 0;">
+            <div class="determinate red lighten-1" id="time-sec" style="width: 0%;"></div>
+        </div>
+        <!-- process loader -->
+        <div class="progress blue-grey hide" id="button_loader" style="margin: 0;">
+            <div class="indeterminate score"></div>
+        </div>
     </div>
 </div>

@@ -134,7 +134,7 @@ let question = [
     {
         number: 14,
         answer:  baseUrl+"/nysit/img/13.1.png",
-        differnce: "",
+        differnce: "Photo aspect ratio",
         score: 100,
         option: [
             "/nysit/img/13.1.png",
@@ -195,7 +195,7 @@ let question = [
         number: 20,
         answer:  baseUrl+"/nysit/img/19.1.png",
         differnce: "Button border radius",
-        score: 100,
+        score: 210,
         option: [
             "/nysit/img/19.1.png",
             "/nysit/img/19.2.png"
@@ -205,7 +205,7 @@ let question = [
         number: 21,
         answer:  baseUrl+"/nysit/img/20.1.png",
         differnce: "Skip button capitalization",
-        score: 100,
+        score: 250,
         option: [
             "/nysit/img/20.1.png",
             "/nysit/img/20.2.png"
@@ -274,7 +274,7 @@ let question = [
     {
         number: 28,
         answer:  baseUrl+"/nysit/img/27.2.png",
-        differnce: "Search icon size",
+        differnce: "Placeholder text Contrast",
         score: 100,
         option: [
             "/nysit/img/27.1.png",
@@ -285,7 +285,7 @@ let question = [
         number: 29,
         answer:  baseUrl+"/nysit/img/28.2.png",
         differnce: "Price tag alignment",
-        score: 100,
+        score: 250,
         option: [
             "/nysit/img/28.1.png",
             "/nysit/img/28.2.png"
@@ -344,8 +344,8 @@ let question = [
     {
         number: 35,
         answer:  baseUrl+"/nysit/img/34.1.png",
-        differnce: "Contrast",
-        score: 100,
+        differnce: "Image resolution",
+        score: 150,
         option: [
             "/nysit/img/34.1.png",
             "/nysit/img/34.2.png"
@@ -355,7 +355,7 @@ let question = [
         number: 36,
         answer:  baseUrl+"/nysit/img/35.1.png",
         differnce: "Spacing betweeen text blocks",
-        score: 100,
+        score: 210,
         option: [
             "/nysit/img/35.1.png",
             "/nysit/img/35.2.png"
@@ -365,7 +365,7 @@ let question = [
         number: 37,
         answer:  baseUrl+"/nysit/img/36.2.png",
         differnce: "Icon tint color",
-        score: 100,
+        score: 350,
         option: [
             "/nysit/img/36.1.png",
             "/nysit/img/36.2.png"
@@ -375,7 +375,7 @@ let question = [
         number: 38,
         answer:  baseUrl+"/nysit/img/37.1.png",
         differnce: "Typo in text block",
-        score: 100,
+        score: 350,
         option: [
             "/nysit/img/37.1.png",
             "/nysit/img/37.2.png"
@@ -385,7 +385,7 @@ let question = [
         number: 39,
         answer:  baseUrl+"/nysit/img/38.2.png",
         differnce: "Button height",
-        score: 100,
+        score: 250,
         option: [
             "/nysit/img/38.1.png",
             "/nysit/img/38.2.png"
@@ -395,7 +395,7 @@ let question = [
         number: 40,
         answer:  baseUrl+"/nysit/img/39.1.png",
         differnce: "Subtitle typography",
-        score: 100,
+        score: 250,
         option: [
             "/nysit/img/39.1.png",
             "/nysit/img/39.2.png"
@@ -405,7 +405,7 @@ let question = [
         number: 41,
         answer:  baseUrl+"/nysit/img/40.1.png",
         differnce: "Placeholder text baseline",
-        score: 100,
+        score: 350,
         option: [
             "/nysit/img/40.1.png",
             "/nysit/img/40.2.png"
@@ -415,7 +415,7 @@ let question = [
         number: 42,
         answer:  baseUrl+"/nysit/img/41.2.png",
         differnce: "Separator line length",
-        score: 100,
+        score: 210,
         option: [
             "/nysit/img/41.1.png",
             "/nysit/img/41.2.png"
@@ -425,7 +425,7 @@ let question = [
         number: 43,
         answer:  baseUrl+"/nysit/img/42.1.png",
         differnce: "Button caption tracking",
-        score: 100,
+        score: 210,
         option: [
             "/nysit/img/42.1.png",
             "/nysit/img/42.2.png"
@@ -435,7 +435,7 @@ let question = [
         number: 44,
         answer:  baseUrl+"/nysit/img/43.2.png",
         differnce: "Button shapes",
-        score: 100,
+        score: 350,
         option: [
             "/nysit/img/43.1.png",
             "/nysit/img/43.2.png"
@@ -444,8 +444,8 @@ let question = [
     {
         number: 45,
         answer:  baseUrl+"/nysit/img/44.1.png",
-        differnce: "Button shapes",
-        score: 100,
+        differnce: "Icon size",
+        score: 350,
         option: [
             "/nysit/img/44.1.png",
             "/nysit/img/44.2.png"
