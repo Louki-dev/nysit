@@ -1,5 +1,5 @@
-var base1_url = "http://localhost/nysit/backend";
-var base_url = "http://localhost/nysit/";
+var base1_url = "https://nysit.co/backend";
+var base_url = "https://nysit.co/";
 
 
 var user_api = base1_url + "/api/v1/process/add-user"; // POST
